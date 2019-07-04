@@ -28,7 +28,7 @@ WARNING: headers should be consistent between the CDS_cDNA and CDS_protein fasta
 
 foreign_cds_detection.sh [path/to/scaffold/file] [path/to/cds/file] [path/to/pep/file] [code_species] [number of CPU] [path/to/reference/database]
 
-Example: foreign_cds_detection.sh assembly.fa cds.fa pep.fa aedes 50 /home/user/refdatabase
+Example: ```foreign_cds_detection.sh assembly.fa cds.fa pep.fa aedes 50 /home/user/refdatabase```
 
 This script should be launched from the folder in which all results will be written. 
 
