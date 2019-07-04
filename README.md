@@ -2,11 +2,11 @@
 
 # About
 
-This script identifies contaminant CDS / scaffolds in a genome assembly, without any a priori on the source(s) of contamination. It also outputs a list of potential HGT candidates, which require a subsequent (phylogenetic) validation. This script focuses on non-metazoan sources of contaminants and HGT, classified in five taxonomic groups: eubacteria, archaea, fungi, viridiplantae and ‘protists’. It was optimized and benchmarked in arthropods, but can be applied to any other taxa, provided that an adequate reference database is available.  
+This script identifies contaminant CDS / scaffolds in a genome assembly, without any a priori on the source(s) of contamination. It also outputs a list of potential HGT candidates, which require subsequent (phylogenetic) validation. This script focuses on non-metazoan sources of contaminants and HGT, classified in five taxonomic groups: eubacteria, archaea, fungi, viridiplantae and ‘protists’. It was optimized and benchmarked in arthropods, but can be applied to any other taxa, provided that an adequate reference database is available.  
 
-The first step of the script consists in a preliminary taxonomic assignment of each CDS based on sequence similarity (DIAMOND BLASTP against a protein reference database). CDS assigned to a non-metazoan group (eubacteria; archaea; viridiplantae; fungi; protists) are considered as “foreign” candidates. In addition, CDS assigned to Arthropoda are labelled as "confident-arthropod" to be later used in the script. The 10 best blast hits are considered instead of just the best one, as a way to account for potential contaminations and other sources of taxonomic mis-assignment in the reference database.
+The first step consists in a preliminary taxonomic assignment of each CDS based on sequence similarity (DIAMOND BLASTP against a protein reference database). CDS assigned to a non-metazoan group (eubacteria; archaea; viridiplantae; fungi; protists) are considered as “foreign” candidates. In addition, CDS assigned to Arthropoda are labelled as "confident-arthropod", to be later used in the script. The 10 best blast hits are considered instead of just the best one, as a way to account for potential taxonomic mis-assignment, e.g. due to contamination, in the reference database.
 
-The second step of the script is a test of synteny. All foreign CDS candidates as well as the “confident-arthropod” CDS are mapped onto the genomic scaffolds using GMAP. A candidate is considered as a potential HGT if it was physically linked to (i.e., mapped to the same scaffold as) at least one “confident-arthropod” CDS. A candidate is considered as a contaminant if it mapped to a scaffold to which no “arthropod-confident” CDS mapped, and at least another non-metazoa CDS mapped. A candidate is considered as “uncertain” if it did not reliably map to any scaffold or if it was the only CDS to map to a given scaffold.
+The second step is a test of synteny. All foreign CDS candidates as well as the “confident-arthropod” CDS are mapped onto the genomic scaffolds using GMAP. A candidate is considered as a potential HGT if physically linked to (i.e., mapped to the same scaffold as) at least one “confident-arthropod” CDS. A candidate is considered as a contaminant if linked to a scaffold to which no “arthropod-confident” CDS mapped, and at least another non-metazoa CDS mapped. A candidate is considered as “uncertain” if it did not reliably map to any scaffold or was the only CDS to map to a given scaffold.
 
 As an example, the genome assembly of *Aedes aegypti* (EnsemblMetazoa) was processed in 3.5 hours using 70 CPU.
 
@@ -30,8 +30,6 @@ foreign_cds_detection.sh [path/to/scaffold/file] [path/to/cds/file] [path/to/pep
 
 Example: ```foreign_cds_detection.sh assembly.fa cds.fa pep.fa aedes 50 /home/user/refdatabase```
 
-This script should be launched from the folder in which all results will be written. 
-
 Requires 6 arguments:
 - ARG 1: path to the scaffolds file
 - ARG 2: path to the fasta file with CDS sequences (cDNA)
@@ -40,19 +38,20 @@ Requires 6 arguments:
 - ARG 5: number of CPU to be used for the DIAMOND blast and Gmap steps
 - ARG 6: path to the reference database for the blast step (should be DIAMOND-formatted, i.e. "database.dmnd"; omit the 'dmnd' extension)
 
+All the results will be written in the folder from which the scrit was launched.
 
 
 # To be noted
 
-- This script copies the 3 fasta files (scaffold / cds / pep) in the working rep where the script was launched, and they are deleted at the end of the script (for cluster use).
+- This script copies the 3 fasta files (scaffold / cds / pep) in the working directory, which are deleted at the end of the script (for cluster use).
 
 - If DIAMOND blast and Gmap are not in your $PATH, you need to specify their absolute path in the code.
 
 
 
-# Outputs
+# Output
 
-This script outputs many intermediary files (in the working repertory), you will mainly be interested in:
+This script outputs many files, you will mainly be interested in:
 
 - 'orfs_contam': for each contaminant CDS : ID / corresponding scaffold / inferred taxonomic group (based on diamond blast results)
 
