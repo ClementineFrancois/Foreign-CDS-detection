@@ -38,7 +38,7 @@ Requires 6 arguments:
 - ARG 3: path to the fasta file with CDS sequences (protein)
 - ARG 4: a (short) code to be used to name all output files
 - ARG 5: number of CPU to be used for the DIAMOND blast and Gmap steps
-- ARG 6: path to the reference database for the BLAST step (should be DIAMOND-formatted, i.e. "database.dmnd"; omit the 'dmnd' extension)
+- ARG 6: path to the reference database for the blast step (should be DIAMOND-formatted, i.e. "database.dmnd"; omit the 'dmnd' extension)
 
 
 
