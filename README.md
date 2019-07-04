@@ -1,6 +1,6 @@
 # Foreign-CDS-detection
 
-# ABOUT
+# About
 
 This script identifies contaminant CDS / scaffolds in a genome assembly, without any a priori on the source(s) of contamination. It also outputs a list of potential HGT candidates, which require a subsequent (phylogenetic) validation. This script focuses on non-metazoan sources of contaminants and HGT, classified in five taxonomic groups: eubacteria, archaea, fungi, viridiplantae and ‘protists’. It was optimized and benchmarked in arthropods, but can be applied to any other taxa, provided that an adequate reference database is available.  
 
@@ -12,7 +12,7 @@ As an example, the genome assembly of Aedes aegypti (EnsemblMetazoa) was process
 
 
 
-# DATA
+# Data
 
 - a genome assembly (scaffolds)
 
@@ -24,7 +24,7 @@ WARNING: headers should be consistent between the CDS_cDNA and CDS_protein fasta
 - required softwares: DIAMOND blast / Gmap / samtools
 
 
-# USAGE
+# Usage
 
 foreign_cds_detection.sh [path/to/scaffold/file] [path/to/cds/file] [path/to/pep/file] [code_species] [number of CPU] [path/to/reference/database]
 
@@ -42,7 +42,7 @@ Requires 6 arguments:
 
 
 
-# TO BE NOTED
+# To be noted
 
 - This script copies the 3 fasta files (scaffold / cds / pep) in the working rep where the script was launched, and they are deleted at the end of the script (for cluster use).
 
@@ -50,7 +50,7 @@ Requires 6 arguments:
 
 
 
-# OUTPUTS
+# Outputs
 
 This script outputs many intermediary files (in the working repertory), you will mainly be interested in:
 
