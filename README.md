@@ -38,7 +38,7 @@ Requires 6 arguments:
 - ARG 5: number of CPU to be used for the DIAMOND blast and Gmap steps
 - ARG 6: path to the reference database for the blast step (should be DIAMOND-formatted, i.e. "database.dmnd"; omit the 'dmnd' extension)
 
-All the results will be written in the folder from which the scrit was launched.
+All the results will be written in the folder from which the script was launched.
 
 
 # To be noted
