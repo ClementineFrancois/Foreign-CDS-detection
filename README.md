@@ -62,6 +62,6 @@ This script outputs many intermediary files (in the working repertory), you will
 
 - 'incertains': ID of all 'uncertain' CDS (i.e. suspicious, but alone on their scaffold -> synteny step was not conclusive) / inferred taxonomy (based on diamond blast results) / species of the best diamond blast hit
 
-- 'summ_after_gmap1': columns 1-14 correspond to intermediary results / col.15-34 correspond to final results; note that col.26-34 correspond to size distribution (min, max, average) of different types of scaffolds (contaminant / containing at least 1 potential HGT / uncertain)
+- 'summ_after_gmap1': columns 1-14 correspond to intermediary results (after 1st blast step) / col.15-34 correspond to final results; note that col.26-34 correspond to size distribution (min, max, average) of different types of scaffolds (contaminant / containing at least 1 potential HGT / uncertain)
 
 - 'settings': file with the date of the analyses & the versions of the softwares.
