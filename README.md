@@ -8,7 +8,7 @@ The first step of the script consists in a preliminary taxonomic assignment of e
 
 The second step of the script is a test of synteny. All foreign CDS candidates as well as the “confident-arthropod” CDS are mapped onto the genomic scaffolds using GMAP. A candidate is considered as a potential HGT if it was physically linked to (i.e., mapped to the same scaffold as) at least one “confident-arthropod” CDS. A candidate is considered as a contaminant if it mapped to a scaffold to which no “arthropod-confident” CDS mapped, and at least another non-metazoa CDS mapped. A candidate is considered as “uncertain” if it did not reliably map to any scaffold or if it was the only CDS to map to a given scaffold.
 
-As an example, the genome assembly of Aedes aegypti (EnsemblMetazoa) was processed in 3.5 hours using 70 CPU.
+As an example, the genome assembly of *Aedes aegypti* (EnsemblMetazoa) was processed in 3.5 hours using 70 CPU.
 
 
 
